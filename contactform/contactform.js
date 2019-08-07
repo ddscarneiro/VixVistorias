@@ -94,6 +94,17 @@ jQuery(document).ready(function($) {
     if( ! action ) {
       action = 'contactform/contactform.php';
     }
+    Email.send({
+      Host : "smtp.elasticemail.com",
+      Username : "ddscarneiro@gmail.com",
+      Password : "e48ce200-b294-451e-8cd5-463fb8a290b8",
+      To : 'bruno.carneiro@vixvistorias.com.br',
+      From : $("#email").val(),
+      Subject : $("#subject").val(),
+      Body : $("name").val() + " - " + $("#message").val()
+  }).then(
+    message => alert($("#name").val() + " obrigado pelo contato!")
+  );
     $.ajax({
       type: "POST",
       url: action,
